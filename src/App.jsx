@@ -43,8 +43,8 @@ function App() {
 
     function getStatus(bmi) {
       if (bmi < 18.5) return "Underweight";
-      else if (bmi >= 18.5 && bmi < 24.9) return "Normal";
-      else if (bmi >= 25 && bmi < 29.9) return "Overweight";
+      else if (bmi >= 18.5 && bmi < 24.9) return "18.5-24.9";
+      else if (bmi >= 25 && bmi < 29.9) return "25-29.9";
       else return "Obese";
     }
 
@@ -56,12 +56,12 @@ function App() {
           <div className="header-content">
             <img src={logo} alt="logo" />
             <div className='header-text'>
-              <h1>Body Mass Index Calculator</h1>
-              <h5>Better understand your weight in relation to your height using our body mass index (BM) calculator. While BMI is not the sole determinant of a healthy weight, it offers a valuable starting point to evaluate your overall health and well-being.</h5>
+              <h1>Vücut Kitle İndeksi Hesaplayıcı</h1>
+              <h5>Vücut Kitle İndeksi (VKİ) hesaplayıcımızı kullanarak, boyunuzla ilişkilendirilmiş olarak ağırlığınızı daha iyi anlayabilirsiniz. VKİ, sağlıklı bir ağırlığın tek belirleyeni olmasa da, genel sağlık ve iyilik durumunuzu değerlendirmek için değerli bir başlangıç noktası sunar.</h5>
             </div>
           </div>
           <form className='card-calculator' >
-            <h4>Enter your details below</h4>
+            <h4>Aşağıya bilgilerinizi girin.</h4>
             <div className='units-container'>
                 <label htmlFor="metric">
                   <input type="radio" name="unit" id='metric' value="metric" checked={unit === 'metric'} onChange={handleUnitChange} />
@@ -81,7 +81,7 @@ function App() {
             {unit === 'metric' && (
             <div className='measure-container metric'>
                 <label htmlFor="height">
-                  <p>Height</p>
+                  <p>Boy</p>
                   <div className='input-wrapper'>
                     <input type="number" name="height" id='heightCM' autoComplete='off' value={height}
                     onChange={(e) => setHeight(e.target.value)} />
@@ -89,7 +89,7 @@ function App() {
                   </div>
                 </label>
                 <label htmlFor="weight">
-                  <p>Weight</p>
+                  <p>Kilo</p>
                   <div className='input-wrapper'>
                     <input type="number" name="weight" id='weightCM' autoComplete='off' value={weight}
                      onChange={(e) => setWeight(e.target.value)} />
@@ -104,7 +104,7 @@ function App() {
             {unit === 'imperial' && (
             <div className='measure-container imperial hidden'>
                 <label htmlFor="height">
-                  <p>Height</p>
+                  <p>Boy</p>
                   <div className='input-wrapper'>
                     <input type="number" name="height" id='heightFT' autoComplete='off'/>
                     <label htmlFor="height">ft</label>
@@ -115,7 +115,7 @@ function App() {
                   </div>
                 </label>
                 <label htmlFor="weight">
-                  <p>Weight</p>
+                  <p>Kilo</p>
                   <div className="flex-wrapper">
                     <div className='input-wrapper'>
                       <input type="number" name="weight" id='weightST'autoComplete='off' />
@@ -132,18 +132,18 @@ function App() {
             {bmiResult && (
             <div className='results-card outcome hidden'>
               <div className="bmi-score">
-                <p><strong>Your BMI is...</strong></p>
+                <p><strong>Vücut Kitle İndeksiniz...</strong></p>
                 <p className='results'>{bmiResult}</p>
               </div>
               <h5 className='results-summary'>
-                Your BMI suggests you’re a healthy weight. Your ideal weight is between <span className='classification'>{status}</span>
+               Vücut Kitle İndeksine göre <span className='classification'>{status}</span>
               </h5>
             </div>
            )}
 
             <div className='results-card placeholder'>
-              <h3>Welcome!</h3>
-              <h5>Enter your height and weight and you’ll see your BMI result here</h5>
+              <h3>Hoş geldiniz!</h3>
+              <h5>Boy ve kilonuzu girin, VKİ sonucunuzu burada göreceksiniz.</h5>
             </div>
           </form>
         </header>
@@ -153,8 +153,8 @@ function App() {
         <section className='result'>
             <img src={removebg} alt="removebg" />
           <div className='result-text'>
-            <h2>What your BMI result means</h2>
-            <h5>A BMI range of 18.5 to 24.9 is considered a 'healthy weight.' Maintaining a healthy weight may lower your chances of experiencing health issues later on, such as obesity and type 2 diabetes. Aim for a nutritious diet with reduced fat and sugar content, incorporating ample fruits and vegetables. Additionally, strive for regular physical activity, ideally about 30 minutes daily for five days a week.</h5>
+            <h2>Vücut Kitle İndeksi (VKİ) sonuçlarınızın anlamı nedir?</h2>
+            <h5>18.5 ila 24.9 arasındaki bir BMI aralığı 'sağlıklı ağırlık' olarak kabul edilir. Sağlıklı bir ağırlığı korumak, ilerleyen dönemde obezite ve tip 2 diyabet gibi sağlık sorunları yaşama olasılığınızı azaltabilir. Dengeli bir diyet hedefleyin, yağ ve şeker içeriğini azaltın ve bol miktarda meyve ve sebze tüketmeye çalışın. Ayrıca, ideal olarak haftada beş gün boyunca günde 30 dakika civarında düzenli fiziksel aktivite hedefleyin.</h5>
           </div>
         </section>
 
@@ -164,8 +164,8 @@ function App() {
           <div className='tips-item'>
             <img src={pinkicon} alt="pinkIcon" />
             <div className="tips-text">
-              <h4>Healthy eating</h4>
-              <h5>Healthy eating promotes weight control, disease prevention, better digestion, immunity, mental clarity, and mood.</h5>
+              <h4>Sağlıklı Beslenme</h4>
+              <h5>Sağlıklı beslenme; kilo kontrolü, hastalık önleme, daha iyi sindirim, bağışıklık, zihinsel netlik ve ruh halini destekler</h5>
             </div>
            
           </div>
@@ -173,16 +173,16 @@ function App() {
           <div className='tips-item'>
             <img src={orangeicon} alt="orangeIcon" />
             <div className="tips-text">
-              <h4>Regular exercise</h4>
-              <h5>Exercise improves fitness, aids weight control, elevates mood, and reduces disease risk, fostering wellness and longevity.</h5>
+              <h4>Düzenli egzersiz</h4>
+              <h5>Egzersiz, fitness'i artırır, kilo kontrolüne yardımcı olur, ruh halini yükseltir ve hastalık riskini azaltarak sağlıklı yaşamı ve uzun ömürü destekler.</h5>
             </div>
           </div>
 
           <div className='tips-item'>
             <img src={blueicon} alt="blueIcon" />
             <div className="tips-text">
-              <h4>Adequate sleep</h4>
-              <h5>Sleep enhances mental clarity, emotional stability, and physical wellness, promoting overall restoration and rejuvenation.</h5>
+              <h4>Yeterli Uyku</h4>
+              <h5>Uyku, zihinsel netliği, duygusal dengeyi ve fiziksel sağlığı artırarak genel restorasyonu ve yeniden canlanmayı teşvik eder.</h5>
             </div> 
           </div>
         </section>
@@ -190,55 +190,52 @@ function App() {
         <section className='limitations'>
 
             <div className='limit-text'>
-              <h2>Limitations of BMI</h2>
-              <h5>Although BMI is often a practical indicator of healthy weight, it is not suited for every person. Specific groups should carefully consider their BMI outcomes, and in certain cases, the measurement may not be beneficial to use.</h5>
+              <h2>VKİ Sınırlamaları</h2>
+              <h5>VKİ genellikle sağlıklı ağırlığın pratik bir göstergesi olsa da, herkes için uygun değildir. Belirli gruplar VKİ sonuçlarını dikkatlice düşünmelidir ve bazı durumlarda ölçüm kullanılmakta faydalı olmayabilir.</h5>
             </div>
 
             <div className='limit-boxs'>
               <div className='box-card genderBox'>
                 <div className='flex-logo'>
                   <img src={gender} alt="gender" />
-                  <h4>Gender</h4>
+                  <h4>Cinsiyet</h4>
                 </div>
-                <h5>The development and body fat composition of girls and boys vary with age. Consequently, a child's age and gender are considered when evaluating their BMI.</h5>
+                <h5>Kız ve erkeklerin gelişimi ile vücut yağ kompozisyonu yaşa bağlı olarak değişiklik gösterir. Bu nedenle, bir çocuğun VKİ'si değerlendirilirken çocuğun yaşı ve cinsiyeti dikkate alınır.</h5>
               </div>
 
 
               <div className='box-card ageBox'>
                 <div className="flex-logo">
                   <img src={age} alt="age" />
-                  <h4>Age</h4>
+                  <h4>Yaş</h4>
                 </div>
-                <h5>In aging individuals, increased body fat and muscle loss may cause BMI to underestimate body fat content.</h5>
+                <h5>Yaşlanan bireylerde artan vücut yağı ve kas kaybı, VKİ'ın vücut yağ içeriğini düşük tahmin etmesine neden olabilir</h5>
               </div>
 
               <div className='box-card muscleBox'>
                 <div className="flex-logo">
                   <img src={muscle} alt="muscle" />
-                  <h4>Muscle</h4>
+                  <h4>Kas</h4>
                 </div>
-                <h5>BMI may misclassify muscular individuals as overweight or obese, as it doesn't differentiate muscle from fat.</h5>
+                <h5>VKİ, kas ile yağı ayırt etmediği için, kaslı bireyleri aşırı kilolu veya obez olarak yanlış sınıflandırabilir.</h5>
               </div>
 
               <div className='box-card pregBox'>
                 <div className="flex-logo">
                   <img src={pregnan} alt="pregnancy" />
-                  <h4>Pregnancy</h4>
+                  <h4>Hamilelik</h4>
                 </div>
-                <h5>Expectant mothers experience weight gain due to their growing baby. Maintaining a healthy pre-pregnancy BMI is advisable to minimise health risks for both mother and child.</h5>
+                <h5>Bekleyen anneler büyüyen bebekleri nedeniyle kilo alırlar. Hem anne hem de çocuk için sağlık risklerini en aza indirmek için sağlıklı bir hamilelik öncesi BMI'ını korumak önerilir.</h5>
               </div>
 
               <div className='box-card raceBox'>
                 <div className="flex-logo">
                   <img src={race} alt="race" />
-                  <h4>Race</h4>
+                  <h4>Irk</h4>
                 </div>
-                <h5>Certain health concerns may affect individuals of some Black and Asian origins at lower BMIs than others. To learn more, it is advised to discuss this with your GP or practice nurse.</h5>
+                <h5>Bazı sağlık sorunları, bazı Siyah ve Asyalı kökenli bireyleri diğerlerinden daha düşük VKİ'lerde etkileyebilir. Daha fazla bilgi almak için, bu konuyu doktorunuz veya pratisyen hemşirenizle konuşmanız önerilir.</h5>
               </div>
             </div>
-
-           
-
         </section>
       </div>
     </>
